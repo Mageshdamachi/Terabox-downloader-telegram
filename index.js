@@ -6,13 +6,16 @@ async function main() {
 
   const bot = new Telegraf(process.env.BOT_TOKEN);
 
+  // Set maximum file size to 100MB
+  bot.telegram.setMaxFileSize(100 * 1024 * 1024);
+
   bot.start(async (ctx) => {
     try {
       ctx.reply(
-        `Hi ${ctx.message.from.first_name},\n\nI can Download Files from Terabox.\n\nMade with ❤️ by @botcodes123\n\nSend any terabox link to download.`,
+        `Hi ${ctx.message.from.first_name},\n\nI can Download Files from Terabox.\n\nMade with 💜 by @Movies_Worldda1 \n\nSend any terabox link to download.`,
         Markup.inlineKeyboard([
-          Markup.button.url(" Channel", "https://t.me/botcodes123"),
-          Markup.button.url("Report bug", "https://t.me/Armanidrisi_bot"),
+          Markup.button.url(" Channel", "https://t.me/Movies_Worldda1"),
+          Markup.button.url("Owner", "https://t.me/iam_magesh"),
         ]),
       );
     } catch (e) {
@@ -27,11 +30,6 @@ async function main() {
         messageText.includes("terabox.com") ||
         messageText.includes("teraboxapp.com")
       ) {
-        //const parts = messageText.split("/");
-        //const linkID = parts[parts.length - 1];
-
-        // ctx.reply(linkID)
-
         const details = await getDetails(messageText);
         if (details && details.direct_link) {
           try {
