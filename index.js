@@ -7,7 +7,7 @@ async function main() {
   const bot = new Telegraf(process.env.BOT_TOKEN);
 
   // Set maximum file size to 100MB
-  bot.telegram.setMaxFileSize(100 * 1024 * 1024);
+ 
 
   bot.start(async (ctx) => {
     try {
